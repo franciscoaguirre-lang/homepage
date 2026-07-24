@@ -1,0 +1,34 @@
+---
+interface Props {
+  variant?: "color" | "light";
+  showWord?: boolean;
+  markClass?: string;
+  wordClass?: string;
+  class?: string;
+}
+const {
+  variant = "color",
+  showWord = true,
+  markClass = "h-8",
+  wordClass = "text-[1.4rem]",
+  class: className = "",
+} = Astro.props;
+
+const c1 = variant === "light" ? "#ffffff" : "#25623b";
+const c2 = variant === "light" ? "#55df87" : "#358f57";
+const wordColor = variant === "light" ? "text-white" : "text-verde";
+---
+
+<span class={`inline-flex items-center gap-2.5 ${className}`}>
+  <svg viewBox="0 0 100 77" class={`${markClass} w-auto shrink-0`} aria-hidden="true">
+    <path d="M99.75 0 L95.41 9.6 L46.99 76.79 L0 76.79 Z" fill={c1}></path>
+    <path d="M99.75 0 L95.41 9.6 L83.19 67.41 L66.69 76.79 L99.75 76.79 Z" fill={c2}></path>
+  </svg>
+  {
+    showWord && (
+      <span class={`font-display font-extrabold tracking-wide ${wordColor} ${wordClass}`}>
+        ASSID
+      </span>
+    )
+  }
+</span>

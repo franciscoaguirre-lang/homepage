@@ -1,0 +1,57 @@
+---
+import Logo from "./Logo.astro";
+---
+
+<section id="nosotros" class="bg-hueso py-24 md:py-32">
+  <div class="shell grid items-center gap-16 lg:grid-cols-2">
+    <div class="reveal">
+      <span class="text-xs font-semibold uppercase tracking-[0.18em] text-medio">Quiénes somos</span>
+      <h2 class="mt-4 text-[clamp(2rem,4vw,3rem)] text-profundo">
+        Diseñadores de soluciones, no vendedores de software
+      </h2>
+      <div class="mt-7 space-y-5 text-[1.05rem] text-gris">
+        <p>
+          En ASSID somos el motor que acelera la evolución de las industrias. Más que una consultora,
+          somos <strong class="font-semibold text-tinta">diseñadores de soluciones integrales</strong>
+          que combinan ingeniería de sistemas, transformación digital y una potente red de alianzas.
+        </p>
+        <p>
+          Nuestro enfoque no solo resuelve problemas operativos: alimenta el crecimiento de tu
+          empresa, generando impacto positivo tanto en tu rentabilidad como en el ecosistema
+          empresarial emergente.
+        </p>
+      </div>
+      <a href="#contacto" class="btn btn-solid mt-9">
+        Hablemos de tu proyecto
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          ><path d="M5 12h14M13 6l6 6-6 6"></path></svg
+        >
+      </a>
+    </div>
+
+    <div class="reveal d1">
+      <!--
+        PLACEHOLDER DE IMAGEN
+        Reemplaza este bloque por una foto real del equipo u operación:
+        <img src="/equipo.jpg" alt="Equipo ASSID" class="aspect-[4/3.4] w-full rounded-2xl object-cover" />
+      -->
+      <div
+        class="relative flex aspect-[4/3.4] items-center justify-center overflow-hidden rounded-2xl bg-[linear-gradient(150deg,var(--color-verde)_0%,var(--color-profundo)_100%)]"
+      >
+        <div
+          class="pointer-events-none absolute inset-0"
+          style="background:radial-gradient(circle at 72% 22%,rgba(85,223,135,0.24) 0%,transparent 60%)"
+          aria-hidden="true"
+        >
+        </div>
+        <div class="dot-grid-light pointer-events-none absolute inset-0 opacity-50" aria-hidden="true"></div>
+        <div class="relative flex flex-col items-center gap-4 opacity-90">
+          <Logo variant="light" showWord={false} markClass="h-20" />
+          <span class="rounded-full bg-black/20 px-3 py-1 text-xs font-medium text-white/70">
+            Espacio para foto del equipo
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,100 @@
+---
+import Logo from "./Logo.astro";
+import { NAV } from "../consts";
+---
+
+<header
+  id="site-header"
+  class="fixed inset-x-0 top-0 z-[100] border-b border-transparent bg-white/80 backdrop-blur-lg transition-[border-color,box-shadow] duration-300"
+>
+  <div class="shell flex h-[4.75rem] items-center justify-between">
+    <a href="#top" class="flex items-center" aria-label="ASSID — inicio">
+      <Logo markClass="h-[2.1rem]" wordClass="text-[1.4rem]" />
+    </a>
+
+    <nav
+      id="site-menu"
+      class="fixed inset-x-0 top-[4.75rem] max-h-0 flex-col gap-0 overflow-hidden border-b border-transparent bg-white px-6 transition-[max-height,padding] duration-300 md:static md:flex md:max-h-none md:flex-row md:items-center md:gap-9 md:overflow-visible md:border-0 md:bg-transparent md:p-0"
+    >
+      {
+        NAV.map((item) => (
+          <a
+            href={item.href}
+            class="group relative block border-b border-borde py-4 text-[0.95rem] font-medium text-gris transition-colors hover:text-verde md:border-0 md:py-1.5 md:text-[0.9rem]"
+          >
+            {item.label}
+            <span class="absolute bottom-0 left-0 hidden h-0.5 w-0 bg-medio transition-[width] duration-300 group-hover:w-full md:block" />
+          </a>
+        ))
+      }
+      <a
+        href="#contacto"
+        class="mt-3 block rounded-sm bg-verde px-5 py-3 text-center text-[0.88rem] font-semibold text-white transition-[background,transform] hover:-translate-y-px hover:bg-profundo md:mt-0 md:py-2.5"
+      >
+        Conversemos
+      </a>
+    </nav>
+
+    <button
+      id="burger"
+      class="relative z-[110] flex h-10 w-10 flex-col items-center justify-center gap-[5px] md:hidden"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="site-menu"
+    >
+      <span class="block h-0.5 w-6 bg-verde transition-transform duration-300"></span>
+      <span class="block h-0.5 w-6 bg-verde transition-opacity duration-300"></span>
+      <span class="block h-0.5 w-6 bg-verde transition-transform duration-300"></span>
+    </button>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById("site-header");
+  const burger = document.getElementById("burger");
+  const menu = document.getElementById("site-menu");
+  const bars = burger?.querySelectorAll<HTMLSpanElement>("span");
+
+  // Sombra/borde al hacer scroll (clases mutuamente excluyentes)
+  const onScroll = () => {
+    if (!header) return;
+    const scrolled = window.scrollY > 16;
+    header.classList.toggle("border-transparent", !scrolled);
+    header.classList.toggle("border-borde", scrolled);
+    header.classList.toggle("shadow-[0_2px_24px_rgba(18,39,27,0.06)]", scrolled);
+  };
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  // Menú móvil
+  const setMenu = (open: boolean) => {
+    if (!menu || !burger) return;
+    menu.classList.toggle("max-h-0", !open);
+    menu.classList.toggle("max-h-[24rem]", open);
+    menu.classList.toggle("py-4", open);
+    menu.classList.toggle("border-transparent", !open);
+    menu.classList.toggle("border-borde", open);
+    menu.classList.toggle("shadow-[0_14px_30px_rgba(18,39,27,0.08)]", open);
+    burger.setAttribute("aria-expanded", String(open));
+    burger.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+    if (bars) {
+      bars[0].classList.toggle("translate-y-[7px]", open);
+      bars[0].classList.toggle("rotate-45", open);
+      bars[1].classList.toggle("opacity-0", open);
+      bars[2].classList.toggle("-translate-y-[7px]", open);
+      bars[2].classList.toggle("-rotate-45", open);
+    }
+  };
+
+  let open = false;
+  burger?.addEventListener("click", () => {
+    open = !open;
+    setMenu(open);
+  });
+  menu?.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => {
+      open = false;
+      setMenu(false);
+    })
+  );
+</script>

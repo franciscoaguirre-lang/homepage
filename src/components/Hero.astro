@@ -1,0 +1,139 @@
+---
+import Logo from "./Logo.astro";
+
+const pilares = [
+  "Diagnóstico y hoja de ruta claros",
+  "Implementación junto a tu equipo",
+  "Servicio continuo, no arreglos puntuales",
+];
+---
+
+<section
+  id="top"
+  class="relative flex min-h-screen items-center overflow-hidden bg-[linear-gradient(160deg,var(--color-hueso)_0%,#ffffff_58%)] pb-20 pt-32 md:pt-36"
+>
+  <!-- Resplandor decorativo -->
+  <div
+    class="pointer-events-none absolute -right-[12%] -top-[15%] h-[46rem] w-[46rem] rounded-full"
+    style="background:radial-gradient(circle,rgba(85,223,135,0.18) 0%,rgba(85,223,135,0) 68%)"
+    aria-hidden="true"
+  >
+  </div>
+  <div class="dot-grid pointer-events-none absolute inset-0 opacity-40" aria-hidden="true"></div>
+
+  <div id="contenido" class="shell relative z-10 grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
+    <!-- Columna de texto -->
+    <div>
+      <div class="rise flex items-center gap-3">
+        <span class="h-px w-9 bg-medio"></span>
+        <span class="text-xs font-semibold uppercase tracking-[0.18em] text-medio">
+          Soluciones industriales y digitales
+        </span>
+      </div>
+
+      <h1 class="rise d1 mt-6 text-[clamp(2.9rem,7vw,5.2rem)] text-profundo">
+        El motor que acelera<br />
+        tu <span class="text-medio">industria</span>.
+      </h1>
+
+      <div class="rise d1 mt-8 h-1 w-20 bg-menta"></div>
+
+      <div class="rise d2 mt-8 max-w-xl space-y-5 text-[1.08rem] text-gris">
+        <p>
+          Integramos <strong class="font-semibold text-tinta">ingeniería de sistemas</strong>,
+          transformación digital y una red de alianzas estratégicas para convertir la fricción
+          operativa en <strong class="font-semibold text-tinta">crecimiento sostenido</strong>.
+        </p>
+        <p>
+          No apagamos incendios: construimos capacidad continua junto a pymes industriales y
+          empresas consolidadas que buscan un socio de verdad.
+        </p>
+      </div>
+
+      <div class="rise d3 mt-9 flex flex-wrap gap-4">
+        <a href="#contacto" class="btn btn-solid">
+          Conversemos
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            ><path d="M5 12h14M13 6l6 6-6 6"></path></svg
+          >
+        </a>
+        <a href="#metodo" class="btn btn-ghost">Ver cómo trabajamos</a>
+      </div>
+
+      <p class="rise d4 mt-7 text-sm text-gris">
+        <span class="font-semibold text-verde">Primera conversación sin costo</span> · Chile
+      </p>
+    </div>
+
+    <!-- Panel visual -->
+    <div class="rise d2 relative">
+      <div
+        class="relative overflow-hidden rounded-[1.6rem] bg-profundo p-8 text-white shadow-[0_30px_80px_rgba(18,39,27,0.28)] md:p-10"
+      >
+        <div class="dot-grid-light pointer-events-none absolute inset-0 opacity-70" aria-hidden="true"></div>
+        <div
+          class="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full"
+          style="background:radial-gradient(circle,rgba(85,223,135,0.28) 0%,transparent 70%)"
+          aria-hidden="true"
+        >
+        </div>
+        <!-- Marca de agua -->
+        <svg
+          viewBox="0 0 100 77"
+          class="pointer-events-none absolute -bottom-6 -right-4 h-40 w-40 opacity-[0.08]"
+          aria-hidden="true"
+        >
+          <path d="M99.75 0 L95.41 9.6 L46.99 76.79 L0 76.79 Z" fill="#ffffff"></path>
+          <path d="M99.75 0 L95.41 9.6 L83.19 67.41 L66.69 76.79 L99.75 76.79 Z" fill="#55df87"
+          ></path>
+        </svg>
+
+        <div class="relative">
+          <span
+            class="inline-flex rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-menta"
+          >
+            El modelo ASSID
+          </span>
+
+          <ul class="mt-7 space-y-4">
+            {
+              pilares.map((p) => (
+                <li class="flex items-start gap-3.5">
+                  <span class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-menta/15">
+                    <svg
+                      viewBox="0 0 24 24"
+                      class="h-3.5 w-3.5"
+                      fill="none"
+                      stroke="#55df87"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </span>
+                  <span class="text-[1.02rem] leading-snug text-white/90">{p}</span>
+                </li>
+              ))
+            }
+          </ul>
+
+          <div class="mt-8 flex items-center justify-between border-t border-white/10 pt-6">
+            <span class="font-display text-lg font-extrabold tracking-tight text-white"
+              >Juntos crecemos.</span
+            >
+            <Logo variant="light" showWord={false} markClass="h-7" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Badge flotante -->
+      <div
+        class="floaty absolute -left-4 -top-5 hidden rounded-xl bg-white px-4 py-3 shadow-[0_16px_40px_rgba(18,39,27,0.16)] sm:block"
+      >
+        <p class="text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-medio">Fricción →</p>
+        <p class="font-display text-base font-extrabold text-profundo">Eficiencia</p>
+      </div>
+    </div>
+  </div>
+</section>

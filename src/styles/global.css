@@ -1,0 +1,243 @@
+@import "tailwindcss";
+
+/* Tipografías variables auto-hospedadas (sin dependencia de Google Fonts) */
+@import "@fontsource-variable/sora";
+@import "@fontsource-variable/manrope";
+
+/* ---------------------------------------------------------------
+   Tokens de marca ASSID -> generan utilidades Tailwind
+   (bg-verde, text-menta, font-display, etc.)
+----------------------------------------------------------------- */
+@theme {
+  --color-profundo: #1a4429;
+  --color-verde: #25623b;
+  --color-medio: #358f57;
+  --color-menta: #55df87;
+  --color-hueso: #f4f7f4;
+  --color-gris: #5d6b62;
+  --color-tinta: #12271b;
+  --color-borde: #e4ece5;
+
+  --font-display: "Sora Variable", system-ui, sans-serif;
+  --font-body: "Manrope Variable", system-ui, sans-serif;
+
+  --shadow-soft: 0 18px 44px rgba(18, 39, 27, 0.08);
+  --shadow-lift: 0 24px 60px rgba(18, 39, 27, 0.14);
+}
+
+/* ---------------------------------------------------------------
+   Base
+----------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    font-family: var(--font-body);
+    color: var(--color-tinta);
+    background: #ffffff;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    font-weight: 800;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: var(--color-menta);
+    color: var(--color-profundo);
+  }
+  :focus-visible {
+    outline: 2.5px solid var(--color-medio);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Componentes utilitarios
+----------------------------------------------------------------- */
+@layer components {
+  .shell {
+    width: 100%;
+    max-width: 75rem;
+    margin-inline: auto;
+    padding-inline: 1.75rem;
+  }
+  @media (max-width: 640px) {
+    .shell {
+      padding-inline: 1.25rem;
+    }
+  }
+
+  /* Fondo de puntos sutil para secciones */
+  .dot-grid {
+    background-image: radial-gradient(rgba(37, 98, 59, 0.16) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+  .dot-grid-light {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Botones */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 1.6rem;
+    border-radius: 0.35rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.95rem;
+    line-height: 1;
+    transition:
+      background 0.25s ease,
+      border-color 0.25s ease,
+      color 0.25s ease,
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+  .btn svg {
+    width: 1.05rem;
+    height: 1.05rem;
+    transition: transform 0.25s ease;
+  }
+  .btn:hover svg {
+    transform: translateX(3px);
+  }
+  .btn-solid {
+    background: var(--color-verde);
+    color: #fff;
+  }
+  .btn-solid:hover {
+    background: var(--color-profundo);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(37, 98, 59, 0.28);
+  }
+  .btn-ghost {
+    border: 1.5px solid var(--color-borde);
+    color: var(--color-verde);
+    background: transparent;
+  }
+  .btn-ghost:hover {
+    border-color: var(--color-medio);
+    background: rgba(53, 143, 87, 0.06);
+  }
+  .btn-light {
+    background: var(--color-menta);
+    color: var(--color-profundo);
+  }
+  .btn-light:hover {
+    background: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
+  }
+}
+
+/* ---------------------------------------------------------------
+   Animaciones: reveal al hacer scroll + entrada del hero
+----------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s cubic-bezier(0.2, 0.7, 0.3, 1),
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+.reveal.d1 {
+  transition-delay: 0.08s;
+}
+.reveal.d2 {
+  transition-delay: 0.16s;
+}
+.reveal.d3 {
+  transition-delay: 0.24s;
+}
+.reveal.d4 {
+  transition-delay: 0.32s;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+.rise.d1 {
+  animation-delay: 0.1s;
+}
+.rise.d2 {
+  animation-delay: 0.2s;
+}
+.rise.d3 {
+  animation-delay: 0.3s;
+}
+.rise.d4 {
+  animation-delay: 0.4s;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee 34s linear infinite;
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+.floaty {
+  animation: floaty 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .rise,
+  .marquee-track,
+  .floaty {
+    animation: none !important;
+  }
+}
