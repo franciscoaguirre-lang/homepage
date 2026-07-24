@@ -36,9 +36,9 @@ src/
 
 ## ✍️ Pendientes por completar
 
-1. **Datos de contacto:** completar `email`, `whatsapp`, `phone` y `linkedin` en
-   [`src/consts.ts`](src/consts.ts). Mientras estén vacíos, la web muestra
-   "Disponible pronto" y no expone información sensible.
+1. **LinkedIn:** agregar la URL del perfil en `CONTACT.linkedin` de
+   [`src/consts.ts`](src/consts.ts). Mientras esté vacío, la web muestra
+   "Disponible pronto". (Correo y WhatsApps ya están cargados.)
 2. **Foto del equipo:** reemplazar el placeholder en [`src/components/Quienes.astro`](src/components/Quienes.astro)
    por una imagen real (ver comentario en el archivo).
 3. **Imagen social (opcional):** añadir un `og:image` (PNG 1200×630) para compartir en redes.

@@ -13,25 +13,22 @@ export const SITE = {
 } as const;
 
 // ---------------------------------------------------------------------------
-// DATOS DE CONTACTO — PENDIENTES
-// Completar con la información real cuando esté disponible. Mientras estén
-// vacíos, la web muestra "Disponible pronto" y no expone datos sensibles.
-//   whatsapp / phone: formato internacional. Ej: whatsapp "56900000000",
-//                     phone "+56900000000".
+// DATOS DE CONTACTO
+// - whatsapps: números de celular (WhatsApp). `e164` es el número en formato
+//   internacional SIN signos ni espacios (para los enlaces wa.me); `label` es
+//   como se muestra en pantalla.
+// - linkedin: pendiente. Mientras esté vacío, la web muestra "Disponible pronto".
 // ---------------------------------------------------------------------------
 export const CONTACT: {
   email: string;
-  whatsapp: string;
-  whatsappLabel: string;
-  phone: string;
-  phoneLabel: string;
+  whatsapps: { e164: string; label: string }[];
   linkedin: string;
 } = {
-  email: "",
-  whatsapp: "",
-  whatsappLabel: "",
-  phone: "",
-  phoneLabel: "",
+  email: "francisco.aguirre@assid.cl",
+  whatsapps: [
+    { e164: "56978496800", label: "+56 9 7849 6800" },
+    { e164: "56993798683", label: "+56 9 9379 8683" },
+  ],
   linkedin: "",
 };
 

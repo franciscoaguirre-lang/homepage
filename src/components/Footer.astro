@@ -45,18 +45,16 @@ import { SITE, CONTACT, NAV } from "../consts";
           )
         }
         {
-          CONTACT.whatsapp ? (
+          CONTACT.whatsapps.map((w) => (
             <a
-              href={`https://wa.me/${CONTACT.whatsapp}`}
+              href={`https://wa.me/${w.e164}`}
               target="_blank"
               rel="noopener"
               class="text-white/65 transition-colors hover:text-white"
             >
-              WhatsApp {CONTACT.whatsappLabel}
+              WhatsApp {w.label}
             </a>
-          ) : (
-            <span class="text-white/45">WhatsApp · disponible pronto</span>
-          )
+          ))
         }
         <span class="text-white/45">{SITE.domain}</span>
       </div>
