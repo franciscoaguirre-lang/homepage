@@ -5,24 +5,59 @@
 @import "@fontsource-variable/manrope";
 
 /* ---------------------------------------------------------------
-   Tokens de marca ASSID -> generan utilidades Tailwind
-   (bg-verde, text-menta, font-display, etc.)
+   Tokens de marca ASSID -> generan utilidades Tailwind.
+   Los tokens semánticos cambian de valor según el tema (claro/oscuro),
+   así las utilidades (bg-bg, text-ink, border-line...) se re-tematizan solas.
 ----------------------------------------------------------------- */
 @theme {
+  /* Acentos de marca (constantes en ambos temas) */
   --color-profundo: #1a4429;
   --color-verde: #25623b;
   --color-medio: #358f57;
   --color-menta: #55df87;
-  --color-hueso: #f4f7f4;
-  --color-gris: #5d6b62;
-  --color-tinta: #12271b;
-  --color-borde: #e4ece5;
+
+  /* Semánticos — valores del tema CLARO (se sobreescriben en oscuro) */
+  --color-bg: #ffffff;
+  --color-surface: #f4f7f4;
+  --color-card: #ffffff;
+  --color-heading: #1a4429;
+  --color-ink: #12271b;
+  --color-muted: #5d6b62;
+  --color-line: #e4ece5;
+  --color-accent: #25623b;
+
+  /* Alias heredados -> semánticos (red de seguridad para clases antiguas) */
+  --color-hueso: var(--color-surface);
+  --color-tinta: var(--color-ink);
+  --color-gris: var(--color-muted);
+  --color-borde: var(--color-line);
 
   --font-display: "Sora Variable", system-ui, sans-serif;
   --font-body: "Manrope Variable", system-ui, sans-serif;
 
   --shadow-soft: 0 18px 44px rgba(18, 39, 27, 0.08);
   --shadow-lift: 0 24px 60px rgba(18, 39, 27, 0.14);
+}
+
+/* ---------------------------------------------------------------
+   Tema oscuro (data-theme="dark" en <html>)
+----------------------------------------------------------------- */
+:root {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #0c1510;
+  --color-surface: #101d15;
+  --color-card: #15241c;
+  --color-heading: #ecf4ee;
+  --color-ink: #e6efe9;
+  --color-muted: #9fb2a6;
+  --color-line: #27372d;
+  --color-accent: #55df87;
+  --shadow-soft: 0 18px 44px rgba(0, 0, 0, 0.5);
+  --shadow-lift: 0 24px 60px rgba(0, 0, 0, 0.6);
 }
 
 /* ---------------------------------------------------------------
@@ -36,8 +71,8 @@
   }
   body {
     font-family: var(--font-body);
-    color: var(--color-tinta);
-    background: #ffffff;
+    color: var(--color-ink);
+    background: var(--color-bg);
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -63,6 +98,30 @@
     outline: 2.5px solid var(--color-medio);
     outline-offset: 3px;
     border-radius: 3px;
+  }
+}
+
+/* Transición suave al alternar el tema */
+@media (prefers-reduced-motion: no-preference) {
+  body,
+  header,
+  footer,
+  section,
+  article,
+  li,
+  .btn,
+  h1,
+  h2,
+  h3,
+  p,
+  span,
+  a,
+  svg {
+    transition:
+      background-color 0.35s ease,
+      border-color 0.35s ease,
+      color 0.35s ease,
+      fill 0.35s ease;
   }
 }
 
@@ -128,13 +187,13 @@
     box-shadow: 0 14px 30px rgba(37, 98, 59, 0.28);
   }
   .btn-ghost {
-    border: 1.5px solid var(--color-borde);
-    color: var(--color-verde);
+    border: 1.5px solid var(--color-line);
+    color: var(--color-accent);
     background: transparent;
   }
   .btn-ghost:hover {
     border-color: var(--color-medio);
-    background: rgba(53, 143, 87, 0.06);
+    background: rgba(53, 143, 87, 0.08);
   }
   .btn-light {
     background: var(--color-menta);
@@ -145,6 +204,25 @@
     transform: translateY(-2px);
     box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
   }
+}
+
+/* Puntos más claros sobre fondo oscuro */
+:root[data-theme="dark"] .dot-grid {
+  background-image: radial-gradient(rgba(85, 223, 135, 0.1) 1px, transparent 1px);
+}
+
+/* Iconos del toggle de tema */
+.theme-icon-sun {
+  display: none;
+}
+.theme-icon-moon {
+  display: block;
+}
+:root[data-theme="dark"] .theme-icon-sun {
+  display: block;
+}
+:root[data-theme="dark"] .theme-icon-moon {
+  display: none;
 }
 
 /* ---------------------------------------------------------------

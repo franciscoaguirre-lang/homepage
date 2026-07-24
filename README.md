@@ -19,6 +19,10 @@ Desde la raíz del proyecto:
 - **Paleta** y **tipografías** (Sora + Manrope, auto-hospedadas) se definen como
   tokens de Tailwind en [`src/styles/global.css`](src/styles/global.css) (bloque `@theme`).
   Cambiar un color ahí lo propaga a todo el sitio.
+- **Modo oscuro:** automático (respeta la preferencia del sistema) con un toggle
+  en el header que persiste en `localStorage`. Los colores son *tokens semánticos*
+  (`bg-bg`, `bg-surface`, `text-ink`, `text-muted`, `border-line`, `text-accent`…)
+  que cambian de valor bajo `:root[data-theme="dark"]`; los verdes de marca se mantienen.
 - **Logo:** [`public/logo.svg`](public/logo.svg) y favicon [`public/favicon.svg`](public/favicon.svg),
   extraídos del diseño original. El componente [`src/components/Logo.astro`](src/components/Logo.astro)
   admite las variantes `color` y `light`.

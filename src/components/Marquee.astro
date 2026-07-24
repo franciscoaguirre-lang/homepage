@@ -11,7 +11,7 @@ const items = [
 const loop = [...items, ...items];
 ---
 
-<div class="border-y border-borde bg-hueso py-5">
+<div class="border-y border-line bg-surface py-5">
   <div
     class="relative flex overflow-hidden"
     style="mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)"
@@ -20,7 +20,7 @@ const loop = [...items, ...items];
       {
         loop.map((item) => (
           <li class="flex items-center gap-10">
-            <span class="whitespace-nowrap font-display text-sm font-semibold uppercase tracking-[0.14em] text-verde/70">
+            <span class="whitespace-nowrap font-display text-sm font-semibold uppercase tracking-[0.14em] text-accent/70">
               {item}
             </span>
             <span class="h-1.5 w-1.5 rotate-45 bg-menta"></span>

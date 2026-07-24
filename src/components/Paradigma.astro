@@ -14,18 +14,18 @@ const assid = [
 ];
 ---
 
-<section id="enfoque" class="bg-white py-24 md:py-32">
+<section id="enfoque" class="bg-bg py-24 md:py-32">
   <div class="shell">
     <div class="reveal mx-auto max-w-3xl text-center">
       <span class="text-xs font-semibold uppercase tracking-[0.18em] text-medio">
         Nuestra propuesta de valor
       </span>
-      <h2 class="mt-4 text-[clamp(2rem,4vw,3rem)] text-profundo">
+      <h2 class="mt-4 text-[clamp(2rem,4vw,3rem)] text-heading">
         Del «apagar incendios» al servicio continuo
       </h2>
-      <p class="mt-5 text-[1.06rem] text-gris">
+      <p class="mt-5 text-[1.06rem] text-muted">
         Dejamos atrás el modelo reactivo tradicional. En ASSID evolucionamos la resolución de
-        problemáticas hacia la <strong class="font-semibold text-tinta">servitización del
+        problemáticas hacia la <strong class="font-semibold text-ink">servitización del
         desarrollo</strong>: no curamos un dolor puntual, integramos capacidades de alto nivel y las
         convertimos en un servicio que crece contigo.
       </p>
@@ -33,7 +33,7 @@ const assid = [
 
     <div class="mt-14 grid gap-6 lg:grid-cols-2">
       <!-- Modelo tradicional -->
-      <article class="reveal relative rounded-2xl border border-borde bg-hueso p-8 md:p-10">
+      <article class="reveal relative rounded-2xl border border-line bg-surface p-8 md:p-10">
         <div class="flex items-center gap-3">
           <span class="flex h-11 w-11 items-center justify-center rounded-xl bg-gris/10">
             <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="#5d6b62" stroke-width="1.8" stroke-linecap="round">
@@ -41,14 +41,14 @@ const assid = [
             </svg>
           </span>
           <div>
-            <p class="text-xs font-semibold uppercase tracking-[0.12em] text-gris">Modelo tradicional</p>
-            <h3 class="font-display text-xl font-bold text-tinta">Apagar incendios</h3>
+            <p class="text-xs font-semibold uppercase tracking-[0.12em] text-muted">Modelo tradicional</p>
+            <h3 class="font-display text-xl font-bold text-ink">Apagar incendios</h3>
           </div>
         </div>
         <ul class="mt-7 space-y-3.5">
           {
             tradicional.map((t) => (
-              <li class="flex items-start gap-3 text-[0.98rem] text-gris">
+              <li class="flex items-start gap-3 text-[0.98rem] text-muted">
                 <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gris/50" />
                 {t}
               </li>
